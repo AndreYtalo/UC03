@@ -15,9 +15,10 @@ export default function AdminFilmesPage() {
     async function carregarFilmes() {
         try {
             const response = await listarFilmes();
-            setFilmes(response.data.filmes);
+            setFilmes(response.data.filmes || []);
         } catch (error) {
             console.error("Erro interno ao carregar filmes:", error);
+            setFilmes([]);
         }
     }
     useEffect(() => {
